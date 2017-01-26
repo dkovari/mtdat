@@ -14,7 +14,7 @@ git merge -s ours --no-commit --allow-unrelated-histories mtdat/master
 git read-tree --prefix=+mtdat/ -u mtdat/master
 
 # Commit the changes
-git commit -m "Subtree merged MATextras to +mtdat"
+git commit -m "Subtree merged mtdat to +mtdat"
 ```
 To update the subtree to use the latest commit you need to manually pull changes.
 ```
