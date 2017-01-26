@@ -21,4 +21,32 @@ To update the subtree to use the latest commit you need to manually pull changes
 git pull -s subtree mtdat master
 ```
 ## Usage
+```matlab
+%Create a header of file attributes:
+my_header.Attribute1 = 'test';
+my_header.Attribute2 = 'another test';
 
+%Define record structure:
+my_records(1).parameter = 'Field1';
+my_records(1).format = 'double';
+my_records(1).size = [3,1];
+
+my_records(2).parameter = 'Field2';
+my_records(2).format = 'char';
+my_records(2).size = [1,10];
+
+%Open the file:
+[fid,RecordStruct] = mtdat.writeheader('MyAwesomeFile.mtdat',my_header,my_records);
+
+%Create a record entry:
+Record.Field1 = [1.1;2.2;3.3];
+Record.Field2 = '0123456789';
+
+mtdat.writerecord(fid,RecordStruct,Record);
+
+%Close the file:
+fclose(fid);
+
+%Read the data from the file:
+[header,data] = mtdat.read('MyAwesomeFile.mtdat');
+```
